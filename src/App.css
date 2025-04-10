@@ -1,38 +1,254 @@
-.App {
+.chat-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.chat-room {
+  padding: 20px;
+}
+
+.message-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.message-bubble {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.message-sent {
+  background-color: #007bff;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+.message-received {
+  background-color: #e9ecef;
+  margin-right: auto;
+}
+
+.message-content {
+  word-wrap: break-word;
+}
+
+.message-time {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.message-form {
+  display: flex;
+  gap: 10px;
+}
+
+.message-form input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.message-form button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.message-form button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.notification {
   text-align: center;
+  color: #666;
+  font-style: italic;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loading {
+  text-align: center;
+  color: #666;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.error {
+  color: red;
+  text-align: center;
+  margin: 10px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.admin-page {
+  padding: 20px;
+}
+
+.admin-page form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.admin-page input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.admin-page button {
+  padding: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.back-button {
+  margin-top: 10px;
+  background-color: #6c757d;
+}
+
+.room-list {
+  padding: 20px;
+}
+
+.room-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+
+.room-item button {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.room-item button:first-of-type {
+  background-color: #007bff;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.room-item button:nth-of-type(2) {
+  background-color: #28a745;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.delete-button {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+
+.admin-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.leave-button {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.typing-indicator {
+  text-align: left;
+  color: #666;
+  font-style: italic;
+  margin: 5px 0;
+}
+
+.message-bubble {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+  max-width: 70%;
+}
+
+.message-sent {
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+.message-received {
+  margin-right: auto;
+}
+
+.message-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.message-received .message-avatar {
+  background-color: #28a745;
+}
+
+.message-body {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message-sent .message-body {
+  background-color: #007bff;
+  color: white;
+}
+
+.message-content {
+  word-wrap: break-word;
+}
+
+.message-time {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.message-sent .message-time {
+  color: #ddd;
+}
+
+.chat-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.clear-button {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
