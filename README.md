@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+# Gun Chat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A real-time chat application built with React, Socket.IO, and Express. Users can create rooms, join as "Car Owner" or "Anonymous," send messages, and view a global conversation feed. Rooms expire after 1 hour or 30 minutes of inactivity.
 
-## Available Scripts
+## Features
+- **Room Creation**: Create chat rooms with a name and optional password.
+- **Role-Based Access**: Join rooms as "Car Owner" (owner) or "Anonymous."
+- **Real-Time Messaging**: Send and receive messages instantly via Socket.IO.
+- **Room List**: View and join active rooms.
+- **Global Conversation**: See a feed of messages across all rooms (limited to 50).
+- **Inactivity Cleanup**: Rooms are deleted after 30 minutes of inactivity or 1-hour expiry.
 
-In the project directory, you can run:
+## Tech Stack
+- **Frontend**: React, React Router, Socket.IO Client
+- **Backend**: Node.js, Express, Socket.IO
+- **Dependencies**: `uuid` for unique IDs
 
-### `npm start`
+## Prerequisites
+- Node.js (v20.18.0 recommended)
+- npm (or yarn)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+gun-app/
+├── react-gun/              # Frontend (React app)
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── GlobalConversation.js  # Global message feed
+│   │   │   └── RoomList.js       # Room list UI
+│   │   ├── hooks/
+│   │   │   ├── useGlobalMessages.js  # Legacy hook (possibly unused)
+│   │   │   └── useRooms.js       # Room management hook
+│   │   ├── AdminPage.js          # Room creation UI
+│   │   ├── App.js                # Main app with routes
+│   │   ├── ChatRoom.js           # Room-specific chat UI
+│   │   ├── socket.js             # Socket.IO client setup
+│   │   ├── index.js              # Entry point
+│   │   └── [other files]         # CSS, tests, etc.
+│   └── package.json
+├── server.js               # Backend (Socket.IO server)
+└── package.json
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install Backend Dependencies
+cd gun-app
+npm install express socket.io uuid
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install Frontend Dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+cd react-gun
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Running Locally
+Development Mode
+Start Backend (port 3031):
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+cd gun-app
+npm start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start Frontend (port 3000):
+cd react-gun
+npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Usage:
+Visit http://localhost:3000/admin to create a room.
+Join rooms from the main page (/) or via URLs like /room/<roomId>/owner.
 
-## Learn More
+Build Frontend:
+cd gun-app/react-gun
+npm run build
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Move Build:
+bash
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Collapse
 
-### Code Splitting
+Wrap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Copy
+cp -r build ../
+Start Server:
+bash
 
-### Analyzing the Bundle Size
+Collapse
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Wrap
 
-### Making a Progressive Web App
+Copy
+cd gun-app
+npm start
+Access at http://localhost:3031
+Deployment to GitHub
+Initialize Git (if not already done):
+bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Collapse
 
-### Advanced Configuration
+Wrap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Copy
+cd gun-app
+git init
+Create .gitignore:
+text
 
-### Deployment
+Collapse
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Wrap
 
-### `npm run build` fails to minify
+Copy
+node_modules/
+react-gun/build/
+*.log
+Add Files:
+bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Collapse
+
+Wrap
+
+Copy
+git add .
+Commit:
+bash
+
+Collapse
+
+Wrap
+
+Copy
+git commit -m "Initial commit of Gun Chat app"
+Create GitHub Repository:
+Go to GitHub, log in, and click "New Repository."
+Name it (e.g., gun-chat), keep it public or private, and don’t initialize with a README (we’ve got one).
+Link and Push:
+bash
+
+Collapse
+
+Wrap
+
+Copy
+git remote add origin https://github.com/<your-username>/gun-chat.git
+git branch -M main
+git push -u origin main
+Notes
+Password: Currently hardcoded as 'admin123' in useRooms. Update to dynamic passwords if needed (see AdminPage.js).
+Global Messages: Requires backend support (not implemented in server.js yet).
+Port: Backend runs on 3031 to avoid conflicts with 3030.
+
+
+
+
